@@ -79,9 +79,110 @@
 				},
 				"completed-docs": {
 					"description": "Enforces documentation for important items be filled out",
-					"type": "array",
-					"items": {
-						"enum": [ true, false, "classes", "functions", "methods", "properties" ]
+					  "type": "array",
+						"items": {
+							"anyOf": [
+								{
+									"enum": [ "classes", "functions", "methods", "properties"],
+									"type": "string"
+								},
+								{
+									"type": "object",
+									"properties": {
+										"classes": {
+											"properties": {
+												"visibilities": {
+													"enum": [ "all", "exported", "internal"],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"enums": {
+											"properties": {
+												"visibilities": {
+													"enum": ["all", "exported", "internal"],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"functions": {
+											"properties": {
+												"visibilities": {
+													"enum": ["all", "exported", "internal"],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"interfaces": {
+											"properties": {
+												"visibilities": {
+													"enum": ["all", "exported", "internal"],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"methods": {
+											"properties": {
+												"locations": {
+													"enum": ["all", "instance", "static"],
+													"type": "string"
+												},
+												"privacies": {
+													"enum": ["all", "private", "protected", "public"],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"namespaces": {
+											"properties": {
+												"visibilities": {
+													"enum": ["all", "exported", "internal"],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"properties": {
+											"properties": {
+												"locations": {
+													"enum": ["all", "instance", "static"],
+													"type": "string"
+												},
+												"privacies": {
+													"enum": ["all", "private", "protected", "public"],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"types": {
+											"properties": {
+												"visibilities": {
+													"enum": ["all", "exported", "internal"],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"variables": {
+											"properties": {
+												"visibilities": {
+													"enum": ["all", "exported", "internal"],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+
 					}
 				},
 				"component-class-suffix": {
